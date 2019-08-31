@@ -19,6 +19,12 @@ public class registerConnection {
            ps.setString(4, r.getPassword());
                 
             a = ps.executeUpdate();
+            
+            PreparedStatement ps1 = con.prepareStatement("insert into mywords(email) values(?)");
+            ps1.setString(1, r.getEmail());
+            
+            int b = ps1.executeUpdate();
+            
 //           if(rs.next()){
 //               System.out.println("Succesful");
 //               a=1;

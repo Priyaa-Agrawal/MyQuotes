@@ -41,13 +41,26 @@
           </nav>
 
       
-          <h1>Hello World!</h1>
-        <div class="input-group">
-  <div class="input-group-prepend">
-    <span class="input-group-text">Your Quote:</span>
-  </div>
-  <textarea class="form-control" aria-label="With textarea"></textarea>
-</div>
+
+        <div class="container">
+            <h2>Hello World!</h2>
+            
+            <form action="myquote" method="post">
+                    <div class="form-group">
+                         <input type="hidden" class="form-control" name="email" value=<%=session.getAttribute("email")%>>
+                            <label for="comment">Your Quote:</label>
+                            <textarea class="form-control" rows="5" placeholder="Write your Quote..." id="comment" name="quote"></textarea>
+                    </div>
+                            <button type="submit" class="btn btn-info">Add</button>
+                </form>
+        </div>
+                         
+          
+          
+          
+          
+          
+          
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
