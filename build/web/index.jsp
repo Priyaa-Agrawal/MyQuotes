@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -26,7 +27,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="index.jsp">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="login.jsp">Login</a>
+              <a class="nav-item nav-link" href="login.jsp">Login</a>
               </div>
             </div>
           </nav>

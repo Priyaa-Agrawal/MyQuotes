@@ -2,6 +2,7 @@
 package com.myQuotes.service;
 
 import com.myQuotes.Dao.loginConnection;
+import com.myQuotes.Dao.welcome;
 import com.myQuotes.model.login;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -21,6 +22,7 @@ public class loginServlet extends HttpServlet {
            HttpSession session = request.getSession(true);
             String email = request.getParameter("user");
             String password = request.getParameter("password");
+            session.setAttribute("email",email);
             
 
             
@@ -29,7 +31,10 @@ public class loginServlet extends HttpServlet {
             int result = lc.loginCon(log);
         
         if (result >0) {
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            welcome wc = new welcome();
+            String name = wc.welcome(log);
+            session.setAttribute("name", name);  
+            request.getRequestDispatcher("account.jsp").forward(request, response);
         } 
         
         else {

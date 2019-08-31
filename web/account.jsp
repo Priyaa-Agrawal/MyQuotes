@@ -1,11 +1,12 @@
 <%-- 
-    Document   : index
-    Created on : 20 Aug, 2019, 9:34:49 PM
+    Document   : account
+    Created on : 31 Aug, 2019, 5:05:52 PM
     Author     : hp
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.myQuotes.service.loginServlet" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -25,13 +26,28 @@
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="index.jsp">Home <span class="sr-only">(current)</span></a>
-              <a class="nav-item nav-link" href="login.jsp">Login</a>
+                <div class="navbar-nav">
+             
+               <a class="nav-item nav-link active" href="index.jsp">Home <span class="sr-only">(current)</span></a>
+                <!--<a class="nav-item nav-link" href="login.jsp">Login</a>-->
+                    <%if(session.getAttribute("email")== null){%>
+                    <a class="nav-item nav-link"href="login.jsp">Login</a>
+                    <%}else{%>
+                    <a class="nav-item nav-link" href="logoutServlet">Logout</a>
+                    <a class="navbar-brand"  style="color: yellow">Welcome!!<br><%=session.getAttribute("name")%> </a>
+                    <%}%>
               </div>
             </div>
           </nav>
 
+      
+          <h1>Hello World!</h1>
+        <div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Your Quote:</span>
+  </div>
+  <textarea class="form-control" aria-label="With textarea"></textarea>
+</div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -39,3 +55,4 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
+

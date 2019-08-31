@@ -18,7 +18,7 @@
     <title>MyQuotes</title>
   
   <style>
-      .bg{
+      body{
     background-image: url("./image/bg2.jpg");
     background-color: gray;
     height: 100%;
@@ -28,7 +28,7 @@
   </style>
   </head>
 
-  <body class="bg">    
+  <body>    
     
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">My Quotes!!</a>
