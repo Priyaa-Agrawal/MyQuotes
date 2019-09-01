@@ -4,6 +4,7 @@
     Author     : hp
 --%>
 
+<%@page import="com.myQuotes.Dao.showquote"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!doctype html>
@@ -37,7 +38,13 @@
             <!--<img class="card-img-top" src="..." alt="Card image cap">-->
             <div class="card-body">
              <h5 class="card-title">Card title</h5>
-                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
+                 <p class="card-text">
+                     <%
+                        showquote show = new showquote();
+//                        show.display();
+                        out.print(show.display());
+                     %>
+                     
                        
                 </p>
              <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
