@@ -9,6 +9,8 @@ package com.myQuotes.Dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -17,30 +19,25 @@ import java.sql.ResultSet;
 public class showquote {
     
     
-     String a=null;
-    public String display(){
+     String a;
+    public List<String> display(){
+        List<String> list=new ArrayList<String>();
         Connection con = null;
         try {
            con =mysqlConnection.getInstance().getConnection();
            PreparedStatement ps = con.prepareStatement("select quote from mywords");
-           //ps.setString(1,l.getEmail());
+           
             ResultSet rs = ps.executeQuery();
          
-           if(rs.next()){
-               
-               System.out.println("Succesful");
-               a=rs.getString(1);
-           }
-           else{
-               System.out.println("UnSuccesful");
-              
-           }
+            while(rs.next()){
+                list.add(rs.getString(1));
+            }
             
         } catch (Exception e) {
             e.printStackTrace();
         }
     
-      return a;
+      return list;
     }
     
 }

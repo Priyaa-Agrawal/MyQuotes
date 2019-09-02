@@ -4,6 +4,8 @@
     Author     : hp
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="com.myQuotes.Dao.showquote"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -32,25 +34,29 @@
               </div>
             </div>
           </nav>
-      
-      
-      <div class="card" style="width: 18rem;">
+        <%
+            showquote show = new showquote();
+             List<String> list=show.display();
+             for(int i=0;i<list.size();i++){
+        %>
+      <div class="container my-2">
+          <div style="display:inline-block;position: relative;padding: 20px" class="card" style="width: 18rem;">
             <!--<img class="card-img-top" src="..." alt="Card image cap">-->
             <div class="card-body">
              <h5 class="card-title">Card title</h5>
                  <p class="card-text">
                      <%
-                        showquote show = new showquote();
-//                        show.display();
-                        out.print(show.display());
+                        out.print(list.get(i));
                      %>
                      
                        
                 </p>
              <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
             </div>
-    </div>
-      
+                     </div>
+      <%
+          }
+      %>
       
       
       
