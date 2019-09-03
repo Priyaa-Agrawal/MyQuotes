@@ -33,6 +33,7 @@
                     <%if(session.getAttribute("email")== null){%>
                     <a class="nav-item nav-link"href="login.jsp">Login</a>
                     <%}else{%>
+                    <a class="nav-item nav-link" href="quotes.jsp">Quotes</a>
                     <a class="nav-item nav-link" href="logoutServlet">Logout</a>
                     <a class="navbar-brand"  style="color: yellow">Welcome!!<br><%=session.getAttribute("name")%> </a>
                     <%}%>

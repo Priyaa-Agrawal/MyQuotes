@@ -1,12 +1,17 @@
 <%-- 
-    Document   : account
-    Created on : 31 Aug, 2019, 5:05:52 PM
+    Document   : quote
+    Created on : 3 Sep, 2019, 12:28:53 AM
     Author     : hp
 --%>
 
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.myQuotes.Dao.showquote"%>
 <%@page import="com.myQuotes.service.loginServlet" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -26,7 +31,7 @@
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
+    <div class="navbar-nav">
              
                <a class="nav-item nav-link active" href="index.jsp">Home <span class="sr-only">(current)</span></a>
                 <!--<a class="nav-item nav-link" href="login.jsp">Login</a>-->
@@ -40,28 +45,39 @@
               </div>
             </div>
           </nav>
-
+        
+                    
+      <%
+//            String email = session.getAttribute("email");
+            showquote show = new showquote();
+             List<String> list=show.display();
+             for(int i=0;i<list.size();i++){
+        %>
+      <div class="container my-2">
+          <div style="display:inline-block;position: relative;padding: 20px" class="card" style="width: 18rem;">
+            <!--<img class="card-img-top" src="..." alt="Card image cap">-->
+            <div class="card-body">
+             <h5 class="card-title">Card title</h5>
+                 <p class="card-text">
+                     <%
+                        out.print(list.get(i));
+                     %>
+                     
+                       
+                </p>
+             <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+            </div>
+                     </div>
+      <%
+          }
+      %>
+      
+      
+      
+      
+      
       
 
-        <div class="container">
-            <h2>Hello World!</h2>
-            
-            <form action="myquote" method="post">
-                    <div class="form-group">
-                         <input type="hidden" class="form-control" name="email" value=<%=session.getAttribute("email")%>>
-                            <label for="comment">Your Quote:</label>
-                            <textarea class="form-control" rows="5" placeholder="Write your Quote..." id="comment" name="quote"></textarea>
-                    </div>
-                            <button type="submit" class="btn btn-info">Add</button>
-                </form>
-        </div>
-                         
-          
-          
-          
-          
-          
-          
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
