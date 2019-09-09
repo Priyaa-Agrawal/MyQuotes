@@ -28,14 +28,15 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
              
-               <a class="nav-item nav-link active" href="index.jsp">Home <span class="sr-only">(current)</span></a>
+               <a class="nav-item nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
                 <!--<a class="nav-item nav-link" href="login.jsp">Login</a>-->
                     <%if(session.getAttribute("email")== null){%>
                     <a class="nav-item nav-link"href="login.jsp">Login</a>
                     <%}else{%>
                     <a class="nav-item nav-link" href="quotes.jsp">Quotes</a>
+                    <a class="nav-item nav-link active" href="account.jsp">NewQuote</a>
                     <a class="nav-item nav-link" href="logoutServlet">Logout</a>
-                    <a class="navbar-brand"  style="color: yellow">Welcome!!<br><%=session.getAttribute("name")%> </a>
+                    
                     <%}%>
               </div>
             </div>
@@ -49,6 +50,7 @@
             <form action="myquote" method="post">
                     <div class="form-group">
                          <input type="hidden" class="form-control" name="email" value=<%=session.getAttribute("email")%>>
+                         <input type="hidden" class="form-control" name="name" value=<%=session.getAttribute("name")%>>
                             <label for="comment">Your Quote:</label>
                             <textarea class="form-control" rows="5" placeholder="Write your Quote..." id="comment" name="quote"></textarea>
                     </div>

@@ -4,10 +4,10 @@
     Author     : hp
 --%>
 
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
+<%@page import="java.util.*"%>
 <%@page import="com.myQuotes.Dao.showquote"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.myQuotes.service.loginServlet" %>
 
 <!doctype html>
 <html lang="en">
@@ -28,25 +28,38 @@
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="index.jsp">Home <span class="sr-only">(current)</span></a>
-              <a class="nav-item nav-link" href="login.jsp">Login</a>
+                 <div class="navbar-nav">
+             
+               <a class="nav-item nav-link active" href="index.jsp">Home <span class="sr-only">(current)</span></a>
+                <!--<a class="nav-item nav-link" href="login.jsp">Login</a>-->
+                    <%if(session.getAttribute("email")== null){%>
+                    <a class="nav-item nav-link"href="login.jsp">Login</a>
+                    <%}else{%>
+                    <a class="nav-item nav-link" href="quotes.jsp">Quotes</a>
+                    <a class="nav-item nav-link" href="account.jsp">NewQuote</a>
+                    <a class="nav-item nav-link" href="logoutServlet">Logout</a>
+                    <a class="navbar-brand"  style="color: yellow">Welcome!!<br><%=session.getAttribute("name")%> </a>
+                    <%}%>
               </div>
             </div>
           </nav>
         <%
             showquote show = new showquote();
-             List<String> list=show.display();
-             for(int i=0;i<list.size();i++){
+                try{
+                    ArrayList<String> list[] = new ArrayList[5];
+
+                 list =show.display();
+
+                for(int i=0;i<list.hashCode();i++){
         %>
       <div class="container my-2">
           <div style="display:inline-block;position: relative;padding: 20px" class="card" style="width: 18rem;">
             <!--<img class="card-img-top" src="..." alt="Card image cap">-->
             <div class="card-body">
-             <h5 class="card-title">Card title</h5>
+                <h3 class="card-title"><% out.print(list[1].get(i)); %></h3>
                  <p class="card-text">
                      <%
-                        out.print(list.get(i));
+                        out.print(list[0].get(i));
                      %>
                      
                        
@@ -55,7 +68,13 @@
             </div>
                      </div>
       <%
-          }
+         } }
+
+        catch (IndexOutOfBoundsException e) { 
+  
+            System.out.println("Exception thrown: "
+                               + e); 
+        } 
       %>
       
       

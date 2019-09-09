@@ -18,26 +18,51 @@ import java.util.List;
  */
 public class showquote {
     
-    
-     String a;
-    public List<String> display(){
-        List<String> list=new ArrayList<String>();
+    public ArrayList<String>[] display(){
+        
+        ArrayList<String> list[] = new ArrayList[5];
+        ArrayList l1 = new ArrayList();
+        ArrayList l2 = new ArrayList();
+
         Connection con = null;
         try {
            con =mysqlConnection.getInstance().getConnection();
-           PreparedStatement ps = con.prepareStatement("select quote from mywords");
-           
+           PreparedStatement ps = con.prepareStatement("select quote,name from mywords");
+
             ResultSet rs = ps.executeQuery();
          
             while(rs.next()){
-                list.add(rs.getString(1));
+                l1.add(rs.getString(1));
+                l2.add(rs.getString(2));
             }
             
         } catch (Exception e) {
             e.printStackTrace();
         }
-    
+    list[0] = l1;
+    list[1] = l2;
       return list;
+    }
+    
+        public List<String> display1(String e){
+        List<String> list1=new ArrayList<String>();
+        Connection con = null;
+        try {
+           con =mysqlConnection.getInstance().getConnection();
+           PreparedStatement ps = con.prepareStatement("select quote from mywords where email=? ");
+           ps.setString(1,e);
+           
+            ResultSet rs = ps.executeQuery();
+         
+            while(rs.next()){
+                list1.add(rs.getString(1));
+            }
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    
+      return list1;
     }
     
 }

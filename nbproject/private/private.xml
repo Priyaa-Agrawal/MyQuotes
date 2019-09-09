@@ -6,7 +6,10 @@
             <file>file:/home/hp/priya/MyQuotes/src/java/com/myQuotes/Dao/showquote.java</file>
             <file>file:/home/hp/priya/MyQuotes/web/account.jsp</file>
             <file>file:/home/hp/priya/MyQuotes/web/quotes.jsp</file>
+            <file>file:/home/hp/priya/MyQuotes/src/java/com/myQuotes/service/myquote.java</file>
+            <file>file:/home/hp/priya/MyQuotes/src/java/com/myQuotes/Dao/quoteConnection.java</file>
             <file>file:/home/hp/priya/MyQuotes/web/index.jsp</file>
+            <file>file:/home/hp/priya/MyQuotes/src/java/com/myQuotes/Dao/loginConnection.java</file>
         </group>
     </open-files>
 </project-private>

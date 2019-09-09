@@ -23,9 +23,10 @@ public class myquote extends HttpServlet {
     
             String words = request.getParameter("quote");
             String email = request.getParameter("email");
+            String name = request.getParameter("name");
             
             
-            quote q = new quote(words,email);
+            quote q = new quote(words,email,name);
             quoteConnection qc = new quoteConnection();
             int r = qc.quoteCon(q);
             

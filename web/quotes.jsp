@@ -38,9 +38,10 @@
                     <%if(session.getAttribute("email")== null){%>
                     <a class="nav-item nav-link"href="login.jsp">Login</a>
                     <%}else{%>
-                    <a class="nav-item nav-link" href="quotes.jsp">Quotes</a>
+                    <a class="nav-item nav-link active" href="quotes.jsp">Quotes</a>
+                    <a class="nav-item nav-link" href="account.jsp">NewQuote</a>
                     <a class="nav-item nav-link" href="logoutServlet">Logout</a>
-                    <a class="navbar-brand"  style="color: yellow">Welcome!!<br><%=session.getAttribute("name")%> </a>
+                   
                     <%}%>
               </div>
             </div>
@@ -48,19 +49,21 @@
         
                     
       <%
-//            String email = session.getAttribute("email");
+          
+//            session.getAttribute("email");
+              String e = session.getAttribute("email").toString();
             showquote show = new showquote();
-             List<String> list=show.display();
-             for(int i=0;i<list.size();i++){
+             List<String> list1=show.display1(e);
+             for(int i=0;i<list1.size();i++){
         %>
       <div class="container my-2">
           <div style="display:inline-block;position: relative;padding: 20px" class="card" style="width: 18rem;">
             <!--<img class="card-img-top" src="..." alt="Card image cap">-->
             <div class="card-body">
-             <h5 class="card-title">Card title</h5>
+                <h4 class="card-title">Quote<% out.print(i+1);%></h4>
                  <p class="card-text">
                      <%
-                        out.print(list.get(i));
+                        out.print(list1.get(i));
                      %>
                      
                        

@@ -22,7 +22,7 @@ public class loginServlet extends HttpServlet {
            HttpSession session = request.getSession(true);
             String email = request.getParameter("user");
             String password = request.getParameter("password");
-            session.setAttribute("email",email);
+            
             
 
             
@@ -34,7 +34,8 @@ public class loginServlet extends HttpServlet {
             welcome wc = new welcome();
             String name = wc.welcome(log);
             session.setAttribute("name", name);  
-            request.getRequestDispatcher("account.jsp").forward(request, response);
+            session.setAttribute("email",email);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         } 
         
         else {
