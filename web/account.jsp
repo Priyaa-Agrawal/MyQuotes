@@ -18,6 +18,17 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>MyQuotes</title>
+        
+  <style>
+      body{
+    background-image: url("./image/img1.jpg");
+    background-color: gray;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+      }
+  </style>
+    
   </head>
   <body>    
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -44,14 +55,14 @@
 
       
 
-        <div class="container">
-            <h2>Hello World!</h2>
+        <div class="container my-4">
+            <h2 style="color: mediumblue">"Whoever is happy will make others happy too."</h2>
             
             <form action="myquote" method="post">
                     <div class="form-group">
                          <input type="hidden" class="form-control" name="email" value=<%=session.getAttribute("email")%>>
                          <input type="hidden" class="form-control" name="name" value=<%=session.getAttribute("name")%>>
-                            <label for="comment">Your Quote:</label>
+                         <label for="comment"><h3>Your Quote:</h3></label>
                             <textarea class="form-control" rows="5" placeholder="Write your Quote..." id="comment" name="quote"></textarea>
                     </div>
                             <button type="submit" class="btn btn-info">Add</button>

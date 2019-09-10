@@ -27,7 +27,7 @@ public class showquote {
         Connection con = null;
         try {
            con =mysqlConnection.getInstance().getConnection();
-           PreparedStatement ps = con.prepareStatement("select quote,name from mywords");
+           PreparedStatement ps = con.prepareStatement("select quotes,name from mywords");
 
             ResultSet rs = ps.executeQuery();
          
@@ -49,7 +49,7 @@ public class showquote {
         Connection con = null;
         try {
            con =mysqlConnection.getInstance().getConnection();
-           PreparedStatement ps = con.prepareStatement("select quote from mywords where email=? ");
+           PreparedStatement ps = con.prepareStatement("select quotes from mywords where email=? ");
            ps.setString(1,e);
            
             ResultSet rs = ps.executeQuery();
@@ -67,5 +67,4 @@ public class showquote {
     
 }
 
-    
-
+  

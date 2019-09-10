@@ -23,6 +23,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>MyQuotes</title>
+        
+  <style>
+      body{
+    background-image: url("./image/img1.jpg");
+    background-color: gray;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+      }
+  </style>
   </head>
   <body>    
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -57,7 +67,7 @@
              for(int i=0;i<list1.size();i++){
         %>
       <div class="container my-2">
-          <div style="display:inline-block;position: relative;padding: 20px" class="card" style="width: 18rem;">
+          <div class="card my-3" style="width: 18rem;">
             <!--<img class="card-img-top" src="..." alt="Card image cap">-->
             <div class="card-body">
                 <h4 class="card-title">Quote<% out.print(i+1);%></h4>
@@ -74,7 +84,7 @@
       <%
           }
       %>
-      
+      </div>
       
       
       

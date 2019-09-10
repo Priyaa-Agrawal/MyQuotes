@@ -18,7 +18,7 @@
     <title>MyQuotes</title>
     <style>
         body{
-      background-image: url("./image/bg.jpeg");
+      background-image: url("./image/bg2.jpg");
       background-color: gray;
       background-repeat: no-repeat;
       background-size: cover;

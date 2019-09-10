@@ -19,7 +19,7 @@
   
   <style>
       body{
-    background-image: url("./image/bg2.jpg");
+    background-image: url("./image/img1.jpg");
     background-color: gray;
     height: 100%;
     background-repeat: no-repeat;

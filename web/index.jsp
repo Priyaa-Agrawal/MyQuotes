@@ -20,6 +20,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>MyQuotes</title>
+    
+  <style>
+      body{
+    background-image: url("./image/img1.jpg");
+    background-color: gray;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+      }
+  </style>
   </head>
   <body>    
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -43,17 +53,18 @@
               </div>
             </div>
           </nav>
+              <div>
         <%
-            showquote show = new showquote();
+            showquote show = new showquote(); 
                 try{
                     ArrayList<String> list[] = new ArrayList[5];
-
-                 list =show.display();
+                     list =show.display();
 
                 for(int i=0;i<list.hashCode();i++){
+                    System.out.println("a-->"+list[1].get(i)); 
         %>
       <div class="container my-2">
-          <div style="display:inline-block;position: relative;padding: 20px" class="card" style="width: 18rem;">
+          <div class="card" style="width: 18rem;">
             <!--<img class="card-img-top" src="..." alt="Card image cap">-->
             <div class="card-body">
                 <h3 class="card-title"><% out.print(list[1].get(i)); %></h3>
@@ -67,6 +78,7 @@
              <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
             </div>
                      </div>
+      </div>
       <%
          } }
 
@@ -76,7 +88,7 @@
                                + e); 
         } 
       %>
-      
+              </div> 
       
       
       

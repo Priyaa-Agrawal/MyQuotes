@@ -18,11 +18,12 @@ public class quoteConnection {
 //            ps.setString(1, q.getQuote());
 //            ps.setString(2, q.getEmail());
             
-            PreparedStatement ps1 = con.prepareStatement("insert into mywords(email,quote,name) values(?,?,?)");
+            PreparedStatement ps1 = con.prepareStatement("insert into mywords(name,email,quotes) values(?,?,?)");
 
-            ps1.setString(1,q.getEmail());
-            ps1.setString(2,q.getQuote());
-            ps1.setString(3,q.getName());
+            ps1.setString(1,q.getName());
+            ps1.setString(2,q.getEmail());
+            ps1.setString(3,q.getQuote());
+            
              a = ps1.executeUpdate();
              
         } 
