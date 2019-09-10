@@ -36,14 +36,14 @@
   </head>
   <body>    
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">My Quotes!!</a>
+            <a class="navbar-brand" href="index.jsp" style="color:lime"><h2>My Quotes!!</h2></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
+    <div class="navbar-nav ml-auto">
              
-               <a class="nav-item nav-link active" href="index.jsp">Home <span class="sr-only">(current)</span></a>
+               <a class="nav-item nav-link " href="index.jsp">Home <span class="sr-only">(current)</span></a>
                 <!--<a class="nav-item nav-link" href="login.jsp">Login</a>-->
                     <%if(session.getAttribute("email")== null){%>
                     <a class="nav-item nav-link"href="login.jsp">Login</a>
@@ -51,32 +51,34 @@
                     <a class="nav-item nav-link active" href="quotes.jsp">Quotes</a>
                     <a class="nav-item nav-link" href="account.jsp">NewQuote</a>
                     <a class="nav-item nav-link" href="logoutServlet">Logout</a>
-                   
                     <%}%>
               </div>
             </div>
           </nav>
+              
+           
         
                     
       <%
-          
+          int count =0;
 //            session.getAttribute("email");
               String e = session.getAttribute("email").toString();
             showquote show = new showquote();
              List<String> list1=show.display1(e);
              for(int i=0;i<list1.size();i++){
+                 count++;
         %>
       <div class="container my-2">
           <div class="card my-3" style="width: 18rem;">
             <!--<img class="card-img-top" src="..." alt="Card image cap">-->
             <div class="card-body">
-                <h4 class="card-title">Quote<% out.print(i+1);%></h4>
-                 <p class="card-text">
+                <h4 class="card-title" style="color: crimson">Quote<% out.print(i+1);%></h4>
+                 <p class="card-text" style="white-space: pre-line;color: navy"><b>
                      <%
                         out.print(list1.get(i));
                      %>
                      
-                       
+                     </b>     
                 </p>
              <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
             </div>
@@ -84,6 +86,18 @@
       <%
           }
       %>
+      
+      
+         <div>
+                  <p>
+                      Total Quotes: 
+                      <%
+                      out.print(count);
+                      %>
+                  </p>
+                  
+              </div>
+        
       </div>
       
       

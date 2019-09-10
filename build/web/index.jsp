@@ -33,14 +33,13 @@
   </head>
   <body>    
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">My Quotes!!</a>
+              <a class="navbar-brand" href="index.jsp" style="color:lime"><h2>My Quotes!!</h2></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                 <div class="navbar-nav">
-             
-               <a class="nav-item nav-link active" href="index.jsp">Home <span class="sr-only">(current)</span></a>
+                 <div class="navbar-nav ml-auto">
+               <a class="nav-item nav-link active " href="index.jsp">Home <span class="sr-only">(current)</span></a>
                 <!--<a class="nav-item nav-link" href="login.jsp">Login</a>-->
                     <%if(session.getAttribute("email")== null){%>
                     <a class="nav-item nav-link"href="login.jsp">Login</a>
@@ -53,7 +52,7 @@
               </div>
             </div>
           </nav>
-              <div>
+              <div class="row">
         <%
             showquote show = new showquote(); 
                 try{
@@ -63,22 +62,25 @@
                 for(int i=0;i<list.hashCode();i++){
                     System.out.println("a-->"+list[1].get(i)); 
         %>
-      <div class="container my-2">
-          <div class="card" style="width: 18rem;">
-            <!--<img class="card-img-top" src="..." alt="Card image cap">-->
-            <div class="card-body">
-                <h3 class="card-title"><% out.print(list[1].get(i)); %></h3>
-                 <p class="card-text">
+      <div class="container">
+          <div class="col-md-4">
+          <div class="card my-3 " style="width: 18rem;">
+              
+              <div class="card-body" style="background-color: papayawhip">
+                  
+                  <h3 class="card-title" style="color: crimson"><u><% out.print(list[1].get(i)); %></u> ~</h3>
+                <p class="card-text" style="white-space: pre-line; color: navy"><b>
                      <%
                         out.print(list[0].get(i));
-                     %>
-                     
-                       
-                </p>
-             <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+                     %> 
+                    </b></p>
+                </div>
             </div>
-                     </div>
-      </div>
+         </div>
+     </div> 
+              </div>
+                    
+                         
       <%
          } }
 
@@ -88,7 +90,7 @@
                                + e); 
         } 
       %>
-              </div> 
+              <!--</div>--> 
       
       
       
