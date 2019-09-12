@@ -25,18 +25,40 @@
     <title>MyQuotes</title>
         
   <style>
-      body{
-    background-image: url("./image/img1.jpg");
+      
+      @import url(https://fonts.googleapis.com/css?family=Righteous);
+
+  body {
+       background-image: url("./image/img1.jpg");
     background-color: gray;
     height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
-      }
+    text-align: center;
+    }
+
+
+h2 {
+  display: inline-block;
+  color:limegreen ;
+  font-family: 'Righteous', serif;
+  font-size: 2em; 
+  text-shadow: .03em .03em 0 hsla(178, 69%, 50%,1);
+  }
+  
+  h3{
+  display: inline-block;
+  color:gold ;
+  font-family: 'Righteous', serif;
+  font-size: 2em; 
+  text-shadow: .03em .03em 0 hsla(357, 69%, 50%,1); 
+  } 
+  
   </style>
   </head>
   <body>    
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.jsp" style="color:lime"><h2>My Quotes!!</h2></a>
+            <a class="navbar-brand" href="index.jsp"><h2>My Quotes!!</h2></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -57,20 +79,17 @@
           </nav>
               
            
-        
+        <div class="row">
                     
       <%
           int count =0;
-//            session.getAttribute("email");
               String e = session.getAttribute("email").toString();
             showquote show = new showquote();
              List<String> list1=show.display1(e);
              for(int i=0;i<list1.size();i++){
                  count++;
         %>
-      <div class="container my-2">
-          <div class="card my-3" style="width: 18rem;">
-            <!--<img class="card-img-top" src="..." alt="Card image cap">-->
+          <div class="card mx-auto my-3" style="width: 18rem;">
             <div class="card-body">
                 <h4 class="card-title" style="color: crimson">Quote<% out.print(i+1);%></h4>
                  <p class="card-text" style="white-space: pre-line;color: navy"><b>
@@ -80,31 +99,25 @@
                      
                      </b>     
                 </p>
-             <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
             </div>
                      </div>
       <%
           }
       %>
       
-      
-         <div>
-                  <p>
-                      Total Quotes: 
+      </div>
+      <div>
+                   <h3 data-shadow='Total Quotes: '>      
+                       Total Quotes: 
                       <%
                       out.print(count);
                       %>
-                  </p>
+                   </h3>
+
                   
               </div>
-        
-      </div>
+       
       
-      
-      
-      
-      
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

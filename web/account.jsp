@@ -20,6 +20,8 @@
     <title>MyQuotes</title>
         
   <style>
+      @import url(https://fonts.googleapis.com/css?family=Righteous);
+
       body{
     background-image: url("./image/img1.jpg");
     background-color: gray;
@@ -27,12 +29,20 @@
     background-repeat: no-repeat;
     background-size: cover;
       }
+      h2 {
+  display: inline-block;
+  color:limegreen ;
+  font-family: 'Righteous', serif;
+  font-size: 2em; 
+  text-shadow: .03em .03em 0 hsla(178, 69%, 50%,1);
+  }
+  
   </style>
     
   </head>
   <body>    
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.jsp" style="color:lime"><h2>My Quotes!!</h2></a>
+            <a class="navbar-brand" href="index.jsp"><h2>My Quotes!!</h2></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
