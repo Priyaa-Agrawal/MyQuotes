@@ -35,9 +35,28 @@
   }
   
     </style>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        function check(){
+            var email = document.getElementById('email').value;
+            
+            axios.get('/MyQuotes/check.jsp?email='+email)
+                    .then(res=>{
+                        console.log(res);
+                document.getElementById('result').innerHTML = res.data;
+            })
+                    .catch(e=>{
+                        console.log(e);
+            })
+           
+        }
+    </script>
   </head>
   
-  <body>    
+  <body>  
+      
+      
+      
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                <a class="navbar-brand" href="index.jsp"><h2>My Quotes!!</h2></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,8 +85,9 @@
                           
                              <div class="form-group mx-3 mt-2">
                                     <label >Email address</label>
-                                    <input type="email" class="form-control" name="email"  placeholder="name@example.com" required="required">
+                                    <input id="email" type="email" class="form-control" name="email"  placeholder="name@example.com" onblur="check()" required="required">
                                 </div>
+                      <div id="result" style="color: red; font-weight: bold" ></div>
                             <div class="form-group mx-3 mt-2">
                                     <label >Contact no.</label>
                                     <input type="text" class="form-control" name="phone"  placeholder="contact no." required="required">

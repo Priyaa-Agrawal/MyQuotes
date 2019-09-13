@@ -80,12 +80,14 @@
               <div class="card-body" style="background-color: papayawhip">
                   
                   <h3 class="card-title" style="color: crimson"><u><% out.print(list[1].get(i)); %></u> ~</h3>
-                <p class="card-text" style="white-space: pre-line; color: navy"><b>
+                <p class="card-text" style="white-space: pre-line; color: navy; font-weight: bold">
                      <%
                         out.print(list[0].get(i));
                      %> 
-                    </b></p>
-                </div>
+                  </p>
+                  <!--<button class="button" type="submit" onclick="like()"></button>-->
+                
+               </div>
             </div>
           
        
