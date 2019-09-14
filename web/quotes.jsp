@@ -99,6 +99,13 @@ h2 {
                      
                      </b>     
                 </p>
+                <form action="removeQuote" method="post">
+                    <input type="hidden" class="form-control" name="quote" value=<%=list1.get(i)%>>
+                    <input type="hidden" class="form-control" name="email" value=<%=e%>>
+                    <button type="submit" class="btn btn-danger btn-sm" >Remove</button>
+                    
+                </form>
+                
             </div>
                      </div>
       <%

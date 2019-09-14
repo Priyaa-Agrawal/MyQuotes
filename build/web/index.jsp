@@ -40,7 +40,26 @@
   text-shadow: .03em .03em 0 hsla(178, 69%, 50%,1);
   }
   
-  </style>
+   .button {
+  background-image:url("./image/like.jpeg");
+  border: none;
+  color: white;
+  /*height: 100%;*/
+  padding: 18px 20px;
+  font-size: 15px;
+  margin: 4px 2px;
+  opacity: 1;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  background-size: cover;
+}
+
+
+
+  </style>  
+  
   </head>
   <body>    
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -84,15 +103,17 @@
                      <%
                         out.print(list[0].get(i));
                      %> 
+                     
+                     <!--Likes~<span id="like"></span>-->
                   </p>
-                  <!--<button class="button" type="submit" onclick="like()"></button>-->
+                  <form action="like" method="post">
+                      <button type="submit" name="quotelike" value=<%=list[0].get(i)%> > </button>
+                      
+                  </form>
                 
                </div>
             </div>
-          
-       
-                    
-                         
+                       
       <%
          } }
 
