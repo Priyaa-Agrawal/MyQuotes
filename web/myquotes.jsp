@@ -1,16 +1,22 @@
 <%-- 
-    Document   : quote
-    Created on : 3 Sep, 2019, 12:28:53 AM
+    Document   : myquotes
+    Created on : 15 Sep, 2019, 8:42:47 PM
     Author     : hp
 --%>
 
 
 
+
+<%@page import="java.sql.*"%>
+<%@page import="com.myQuotes.Dao.mysqlConnection"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.myQuotes.Dao.showquote"%>
 <%@page import="com.myQuotes.service.loginServlet" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+
+
 
 <!doctype html>
 <html lang="en">
@@ -53,7 +59,7 @@ h2 {
   font-size: 2em; 
   text-shadow: .03em .03em 0 hsla(357, 69%, 50%,1); 
   } 
-  
+
   </style>
   </head>
   <body>    
@@ -81,28 +87,65 @@ h2 {
            
         <div class="row">
                     
-      <%
-          int count =0;
+      <% 
               String e = session.getAttribute("email").toString();
-            showquote show = new showquote();
-             List<String> list1=show.display1(e);
-             for(int i=0;i<list1.size();i++){
-                 count++;
+            int count=0;
+             Connection con = null;
+        try {
+            System.out.println("email->"+e); 
+           con =mysqlConnection.getInstance().getConnection();
+           PreparedStatement ps = con.prepareStatement("select quotes,qid from mywords where email=? ");
+           ps.setString(1,e);
+           
+            ResultSet rs = ps.executeQuery();
+         
+            while(rs.next()){
+                String q = rs.getString(1);
+                int id = rs.getInt("qid");
+                System.out.println(id);
+                count++;
         %>
-          <div class="card mx-auto my-3" style="width: 18rem;">
+  <div class="card mx-auto my-3" style="width: 18rem;">
             <div class="card-body">
-                <h4 class="card-title" style="color: crimson">Quote<% out.print(i+1);%></h4>
+                <h4 class="card-title" style="color: saddlebrown; font-weight: bold;">Quote<% out.print(count);%></h4>
                  <p class="card-text" style="white-space: pre-line;color: navy"><b>
                      <%
-                        out.print(list1.get(i));
+                        out.print(q);
                      %>
                      
                      </b>     
                 </p>
-                <form action="removeQuote" method="post">
-                    <input type="hidden" class="form-control" name="quote" value=<%=list1.get(i)%>>
-                    <input type="hidden" class="form-control" name="email" value=<%=e%>>
-                    <button type="submit" class="btn btn-danger btn-sm" >Remove</button>
+                
+                 <form action="removeQuote" method="post">
+                    
+                    <input type="hidden" class="form-control" name="id" value=<%=id%>>
+                    
+                    <!--<button type="submit" class="btn btn-danger btn-sm">Remove</button>-->
+                    
+                    
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal">Remove</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h4 class="modal-title" id="exampleModalLabel" style="color: crimson; font-weight: bold; font-size: x-large;">Warning</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                    <div class="modal-body" style="font-weight: bold; font-size: larger">
+                                    Are you sure you want to delete ?
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-warning btn-lg" data-dismiss="modal">No</button>
+                                    <button type="submit" class="btn btn-primary btn-lg">Yes</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                     
                 </form>
                 
@@ -113,6 +156,14 @@ h2 {
       %>
       
       </div>
+
+        <%    }
+            
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
+      %>
+        
       <div>
                    <h3 data-shadow='Total Quotes: '>      
                        Total Quotes: 
@@ -132,4 +183,3 @@ h2 {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
-

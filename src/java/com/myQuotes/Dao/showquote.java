@@ -23,17 +23,19 @@ public class showquote {
         ArrayList<String> list[] = new ArrayList[5];
         ArrayList l1 = new ArrayList();
         ArrayList l2 = new ArrayList();
+        ArrayList l3 = new ArrayList();
 
         Connection con = null;
         try {
            con =mysqlConnection.getInstance().getConnection();
-           PreparedStatement ps = con.prepareStatement("select quotes,name from mywords");
+           PreparedStatement ps = con.prepareStatement("select quotes,name,likess from mywords");
 
             ResultSet rs = ps.executeQuery();
          
             while(rs.next()){
                 l1.add(rs.getString(1));
                 l2.add(rs.getString(2));
+                l3.add(rs.getString(3));
             }
             
         } catch (Exception e) {
@@ -41,6 +43,7 @@ public class showquote {
         }
     list[0] = l1;
     list[1] = l2;
+    list[2] = l3;
       return list;
     }
     

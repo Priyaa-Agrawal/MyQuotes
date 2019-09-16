@@ -20,16 +20,21 @@ public class removeQuote extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-          
-        String quote = request.getParameter("quote");
-        String e = request.getParameter("email");
+          System.out.println("hello");
+//        String quote = request.getParameter("quote");
+//        String e = request.getParameter("email");
+    String id1 = request.getParameter("id");
+           System.out.println("id->"+id1);
+           int id = Integer.parseInt(request.getParameter("id"));
+           
         quoteConnection q = new quoteConnection();
-        int r = q.remove(quote,e);
-        
+        int r = q.remove(id);
+        System.out.println("r->"+r);
         if (r>0) {
-            request.getRequestDispatcher("quotes.jsp").forward(request, response);
+            response.sendRedirect("myquotes.jsp"); 
+            //request.getRequestDispatcher("quotes.jsp").forward(request, response);
         } else {
-            request.getRequestDispatcher("quotes.jsp").forward(request, response);
+            request.getRequestDispatcher("myquotes.jsp").forward(request, response);
         }
     }
 }

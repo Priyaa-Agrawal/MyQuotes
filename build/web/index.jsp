@@ -4,6 +4,8 @@
     Author     : hp
 --%>
 
+<%@page import="com.myQuotes.Dao.mysqlConnection"%>
+<%@page import="java.sql.*"%>
 <%@page import="java.util.*"%>
 <%@page import="com.myQuotes.Dao.showquote"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -40,11 +42,11 @@
   text-shadow: .03em .03em 0 hsla(178, 69%, 50%,1);
   }
   
-   .button {
+/*   .button {
   background-image:url("./image/like.jpeg");
   border: none;
   color: white;
-  /*height: 100%;*/
+  height: 100%;
   padding: 18px 20px;
   font-size: 15px;
   margin: 4px 2px;
@@ -54,7 +56,7 @@
   text-decoration: none;
   cursor: pointer;
   background-size: cover;
-}
+}*/
 
 
 
@@ -74,23 +76,48 @@
                     <%if(session.getAttribute("email")== null){%>
                     <a class="nav-item nav-link"href="login.jsp">Login</a>
                     <%}else{%>
-                    <a class="nav-item nav-link" href="quotes.jsp">Quotes</a>
+                    <a class="nav-item nav-link" href="myquotes.jsp">Quotes</a>
                     <a class="nav-item nav-link" href="account.jsp">NewQuote</a>
                     <a class="nav-item nav-link" href="logoutServlet">Logout</a>
                     <a class="navbar-brand"  style="color: yellow">Welcome!!<br><%=session.getAttribute("name")%> </a>
                     <%}%>
-              </div>
+              </div> 
             </div>
           </nav>
               <div class="row">
+                  
+                  
         <%
-            showquote show = new showquote(); 
-                try{
-                    ArrayList<String> list[] = new ArrayList[5];
-                     list =show.display();
+            
+            
+            
+             Connection con = null;
+        try {
+           con =mysqlConnection.getInstance().getConnection();
+           PreparedStatement ps = con.prepareStatement("select quotes,name,likess,qid from mywords");
 
-                for(int i=0;i<list.hashCode();i++){
-                    System.out.println("a-->"+list[1].get(i)); 
+            ResultSet rs = ps.executeQuery();
+         
+            while(rs.next()){
+                String q = rs.getString(1);
+                String name = rs.getString(2);
+                String likess = rs.getString(3);
+                int id = rs.getInt("qid");
+
+            
+        
+//            showquote show = new showquote(); 
+//                try{
+//                    ArrayList<String> list[] = new ArrayList[5];
+//                     list =show.display();
+//                     
+//                for(int i=0;i<list[1].size();i++){
+//                    try{
+//                    System.out.println("a-->"+list[1].get(i)); 
+//                    }
+//                    catch(Exception e){
+//                        e.printStackTrace();
+//                    }
         %>
      
          
@@ -98,19 +125,27 @@
               
               <div class="card-body" style="background-color: papayawhip">
                   
-                  <h3 class="card-title" style="color: crimson"><u><% out.print(list[1].get(i)); %></u> ~</h3>
+                  <h3 class="card-title" style="color: crimson"><u><% out.print(name); %></u> ~</h3>
                 <p class="card-text" style="white-space: pre-line; color: navy; font-weight: bold">
                      <%
-                        out.print(list[0].get(i));
+                        out.print(q);
                      %> 
                      
-                     <!--Likes~<span id="like"></span>-->
-                  </p>
-                  <form action="like" method="post">
-                      <button type="submit" name="quotelike" value=<%=list[0].get(i)%> > </button>
+                <h5 style="color: saddlebrown">Likes: 
+                    <%
+                        out.print(likess);
+                    %> 
+                     
+                  
+                </h5>
+                  
+                <!--<button class="btn btn-danger">Like!!!</button>-->
+                <form action="like" method="post">
+                    <button type="submit" class="btn" style="background-image: url(image/like.jpeg); background-size: cover; width: 50px; height: 50px; " name="id" value=<%=id%> ></button>
                       
                   </form>
-                
+               </p>
+
                </div>
             </div>
                        

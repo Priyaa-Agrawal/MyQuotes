@@ -18,10 +18,14 @@ public class like extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
      
-        String quote = request.getParameter("quotelike");
+        int id = Integer.parseInt(request.getParameter("id"));
         quoteConnection qc = new quoteConnection();
-        int r = qc.like(quote);
-        
+        int r = qc.like(id);
+        if (r>0) {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        } else {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
         
         
     }

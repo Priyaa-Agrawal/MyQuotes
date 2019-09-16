@@ -54,7 +54,7 @@
                     <%if(session.getAttribute("email")== null){%>
                     <a class="nav-item nav-link"href="login.jsp">Login</a>
                     <%}else{%>
-                    <a class="nav-item nav-link" href="quotes.jsp">Quotes</a>
+                    <a class="nav-item nav-link" href="myquotes.jsp">Quotes</a>
                     <a class="nav-item nav-link active" href="account.jsp">NewQuote</a>
                     <a class="nav-item nav-link" href="logoutServlet">Logout</a>
                     
